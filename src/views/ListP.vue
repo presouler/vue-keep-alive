@@ -1,33 +1,33 @@
-<template>
-  <div class="hello">
-    <!-- <ul>
-      <li
-      v-for="item in list"
-      :key="item.id"
-      @click="handleClick(item.id)"
-      >
+!<template>
+  <div>
+    <h1>{{$route.params.id}}</h1>
+    <ul>
+      <li v-for="item in list" :key="item.id" @click="handleClick(item.id)">
         <div>{{ item.title }}</div>
       </li>
-    </ul> -->
+    </ul>
   </div>
 </template>
 
 <script>
-// import Services from '../services/service'
+import Services from '../services/service'
 
 export default {
+
   created () {
-    console.log('list created on')
-    // Services.getList().then(({ data }) => {
-    //   this.list = data
-    // })
+    const params = this.$route.params
+    Services.getList(params.id).then(({ data }) => {
+      this.list = data
+    })
+  },
+  activated () {
+    console.log('s')
   },
   data () {
     return {
       list: []
     }
   },
-  name: 'HelloWorld',
   methods: {
     handleClick (id) {
       this.$router.push({ name: 'Spec', params: { id } })
@@ -37,6 +37,9 @@ export default {
 </script>
 
 <style scoped>
+.title {
+  text-align: center;
+}
 ul{
   list-style-type: none;
 }

@@ -15,11 +15,11 @@ export default {
   created: function () {
     console.log('spe created')
     this.id = this.$route.params.id
-  },
-  beforeRouteLeave (to, from, next) {
-    to.meta.keepAlive = true
-    next()
   }
+  // beforeRouteLeave (to, from, next) {
+  //   to.meta.keepAlive = true
+  //   next()
+  // }
 }
 </script>
 

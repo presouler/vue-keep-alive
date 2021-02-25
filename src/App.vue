@@ -2,12 +2,18 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/about">About</router-link>|
+      <router-link :to="{path:'/list/1',params:{id:1}}">List1</router-link>
+      <router-link :to="{path:'/list/2',params:{id:2}}">List2</router-link>
     </div>
+    <!-- <keep-alive>
+      <router-view></router-view>
+    </keep-alive> -->
     <keep-alive>
-      <router-view v-if="$route.meta.keepAlive"></router-view>
+      <router-view :key='$route.fullPath' v-if="$route.meta.keepAlive"></router-view>
     </keep-alive>
-      <router-view v-if="!$route.meta.keepAlive"></router-view>
+      <router-view :key='$route.fullPath' v-if="!$route.meta.keepAlive"></router-view>
+      <!-- <router-view :key='$route.fullPath'></router-view> -->
   </div>
 </template>
 

@@ -10,6 +10,6 @@ const client = axios.create({
 
 export default {
   getList (query = {}) {
-    return client.get('/list')
+    return client.get('list' + query)
   }
 }
